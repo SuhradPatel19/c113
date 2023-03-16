@@ -1,0 +1,37 @@
+import shutil
+import os
+
+from_dir=r"D:\dev\python\from_dir"
+to_dir=r"D:\dev\python\to_dir"
+
+list_of_files=os.listdir(from_dir)
+# print(list_of_files)
+
+for i in list_of_files:
+   # print(i)
+   name,extension=os.path.splitext(i)
+   # print(name)
+
+   if extension=="":
+      continue
+   if extension in [".png",".wav",".jpg",".mp3",".mp4"]:
+      path1=from_dir+"/"+i
+      path2=to_dir+"/"+"movedFiles"
+      path3=to_dir+"/"+"movedFiles"+"/"+i
+
+      print("Path 1:  ",path1)
+      print("Path 2:  ",path2)
+      print("Path 3:  ",path3)
+
+      if os.path.exists(path2):
+         print("Moving Files... ")
+         shutil.move(path1,path3)
+      else:
+         os.makedirs(path2)
+         print("Moving Files... ")
+         shutil.move(path1,path3)
+         
+      
+
+
+
